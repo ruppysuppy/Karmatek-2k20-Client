@@ -18,8 +18,15 @@ url = ' http://127.0.0.1:5000/api'
 header = {'user': 'admin',
         'password': 'supersecretpassword'}
 
-r = requests.get(url, headers=header)
+try:
+        r = requests.get(url, headers=header)
+        data = r.json()
+        generate_data(data)
 
-data = r.json()
+except requests.exceptions.ConnectionError:
+        print('Connection Error!'.upper())
+        print('Closing Program...'.upper())
 
-generate_data(data)
+except:
+        print("Error!".upper())
+        print('Closing Program...'.upper())

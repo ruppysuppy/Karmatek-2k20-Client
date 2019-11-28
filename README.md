@@ -17,3 +17,6 @@ Follow the steps to the local server on your machine:
 * Run the Command 'pip install -r requirements.txt' (to install the dependencies)
 * Run the Command 'python client.py'
 * Check the directory for 'Paticipation_Data.xlsx' which contains the participants details
+
+## NOTE
+The Karmatek Website must be up and running (as the data is extracted from there) and should have entries (otherwise empty Excel sheet will be generated).
