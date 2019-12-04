@@ -128,6 +128,8 @@ def update_admin():
                         if (r.status_code == 200):
                                 if (len(r.json()) > 0):
                                         print('Task Complete!')
+                                        header['user'] = header_update['user_new']
+                                        header['password'] = header_update['password_new']
                                 else:
                                         print('Error! Couldn\'t update details')
                         else:
