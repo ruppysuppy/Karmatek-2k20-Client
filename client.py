@@ -104,45 +104,33 @@ def update_admin():
         choice = input("Are you sure you want to update admin details? (y/n): ").lower()
 
         if (choice == 'y'):
-                try:
-                        header_update = {}
+                header_update = {}
 
-                        user_confirm = input("Enter user-name: ")
-                        password_confirm = input("Enter password: ")
+                user_confirm = input("Enter user-name: ")
+                password_confirm = input("Enter password: ")
 
-                        header_update['user'] = user_confirm
-                        header_update['password'] = password_confirm
+                header_update['user'] = user_confirm
+                header_update['password'] = password_confirm
 
-                        r = requests.patch(url, headers=header_update)
+                r = requests.patch(url, headers=header_update)
 
-                        if (r.json()["status"] == "Accepted"):
-                                print('Access Granted...')
-                        else:
-                                print("Access Denied. Check the username and password")
-                                return
+                if (r.json()["status"] == "Accepted"):
+                        print('Access Granted...')
+                else:
+                        print("Access Denied. Check the username and password")
+                        return
 
-                        header_update['user_new'] = input('Enter the new username: ')
-                        header_update['password_new'] = input('Enter the new password: ')
+                header_update['user_new'] = input('Enter the new username: ')
+                header_update['password_new'] = input('Enter the new password: ')
 
-                        r = requests.put(url, headers=header_update)
-                        if (r.status_code == 200):
-                                if (len(r.json()) > 0):
-                                        print('Task Complete!')
-                                        header['user'] = header_update['user_new']
-                                        header['password'] = header_update['password_new']
-                                else:
-                                        print('Error! Couldn\'t update details')
-                        else:
-                                raise RuntimeError
+                r = requests.put(url, headers=header_update)
                 
-                except requests.exceptions.ConnectionError:
-                        print('Connection Error!'.upper())
-                        print('Closing Program...'.upper())
-
-                except:
-                        print("Error!".upper())
-                        print('Closing Program...'.upper())
-                        exit()
+                if (r.status_code == 200):
+                        print('Task Complete!')
+                        header['user'] = header_update['user_new']
+                        header['password'] = header_update['password_new']
+                else:
+                        print('Error! Couldn\'t update details')
 
 ####################################################
 # DRIVER CODE ######################################
