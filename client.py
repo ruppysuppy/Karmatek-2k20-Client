@@ -63,11 +63,10 @@ def data_gen():
                 except requests.exceptions.ConnectionError:
                         print('Connection Error!'.upper())
                         print('Closing Program...'.upper())
+                        exit()
 
                 except:
-                        print("Error!".upper())
-                        print('Closing Program...'.upper())
-                        exit()
+                        print("Some Error has occoured!".upper())
 
 ####################################################
 # EMAIL RESEND REQUEST #############################
@@ -90,11 +89,10 @@ def email_resend():
                 except requests.exceptions.ConnectionError:
                         print('Connection Error!'.upper())
                         print('Closing Program...'.upper())
+                        exit()
 
                 except:
-                        print("Error!".upper())
-                        print('Closing Program...'.upper())
-                        exit()
+                        print("Some Error has occoured!".upper())
 
 ####################################################
 # UPDATE ADMIN DETAILS REQUEST ######################
@@ -106,8 +104,8 @@ def update_admin():
         if (choice == 'y'):
                 header_update = {}
 
-                user_confirm = input("Enter user-name: ")
-                password_confirm = input("Enter password: ")
+                user_confirm = input("Enter user-name for re-confirmation: ")
+                password_confirm = input("Enter password for re-confirmation: ")
 
                 header_update['user'] = user_confirm
                 header_update['password'] = password_confirm
@@ -120,15 +118,24 @@ def update_admin():
                         print("Access Denied. Check the username and password")
                         return
 
-                header_update['user_new'] = input('Enter the new username: ')
-                header_update['password_new'] = input('Enter the new password: ')
+                header_update['user_new'] = input('Enter the new username (Leave blank for no change): ')
+
+                if (header_update['user_new'] == ""):
+                        header_update['user_new'] = None
+                
+                header_update['password_new'] = input('Enter the new password (Leave blank for no change): ')
+
+                if (header_update['password_new'] == ""):
+                        header_update['password_new'] = None
 
                 r = requests.put(url, headers=header_update)
                 
                 if (r.status_code == 200):
+                        if (header_update['user_new'] != None):
+                                header['user'] = header_update['user_new']
+                        if (header_update['password_new'] != None):
+                                header['password'] = header_update['password_new']
                         print('Task Complete!')
-                        header['user'] = header_update['user_new']
-                        header['password'] = header_update['password_new']
                 else:
                         print('Error! Couldn\'t update details')
 
@@ -154,7 +161,7 @@ while True:
                 update_admin()
 
         elif (choice == '4'):
-                print(f'Bye {user}!')
+                print(f'Bye {header["user"]}!')
                 print('Have a nice day')
                 break
 
