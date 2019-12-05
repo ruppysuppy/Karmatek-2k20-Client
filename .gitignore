@@ -9,3 +9,9 @@ bin-release/
 
 # Excel files
 *.xlsx
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyc
