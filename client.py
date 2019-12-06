@@ -17,7 +17,6 @@ import requests
 url = ' http://127.0.0.1:5000/api'
 header = {}
 
-
 ####################################################
 # USER DETAILS + VALIDATION ########################
 ####################################################
@@ -32,12 +31,19 @@ password = input("Enter password: ")
 header['user'] = user
 header['password'] = password
 
-r = requests.patch(url, headers=header)
+try:
+        r = requests.patch(url, headers=header)
 
-if (r.json()["status"] == "Accepted"):
-        print('Access Granted...')
-else:
-        print("Access Denied. Closing program...")
+        if (r.json()["status"] == "Accepted"):
+                print('Access Granted...')
+        else:
+                print("Access Denied. Closing program...")
+                exit()
+
+except:
+        print("Connection Error!")
+        print("Unable to connect to server. Make sure Karmatek Site is running in case of local server, otherwise, check the url variable.")
+        print("Closing program...")
         exit()
 
 ####################################################
