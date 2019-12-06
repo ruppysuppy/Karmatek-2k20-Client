@@ -15,8 +15,12 @@ Follow the steps to the local server on your machine:
 * Navigate to the extrated folder
 * Open the Terminal/CMD/PowerShell at the location (Shift + Right Click => Run Command Prompt for Windows Users)
 * Run the Command 'pip install -r requirements.txt' (to install the dependencies)
-* Run the Command 'python client.py'
-* Check the directory for 'Paticipation_Data.xlsx' which contains the participants details
+* Run the Command 'python client.py' (Before running it, Karmatek site (https://github.com/ruppysuppy/Karmatek-2k20) must be running)
+* Follow the on-screen instructions and enter the corresponding input for the desired output
+
+## Default Settings
+* username: admin
+* password: password
 
 ## NOTE
 The Karmatek Website must be up and running (as the data is extracted from there) and should have entries (otherwise empty Excel sheet will be generated).
