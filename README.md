@@ -6,6 +6,8 @@ This project uses the following technologies:
 * Python 3.x
 * Pandas
 * Requests
+* Hashlib
+* Pickle
 
 ## How to use (for non-technical people/beginners)
 Follow the steps to the local server on your machine:
