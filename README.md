@@ -25,4 +25,4 @@ Follow the steps to the local server on your machine:
 * password: password
 
 ## NOTE
-The Karmatek Website must be up and running (as the data is extracted from there) and should have entries (otherwise empty Excel sheet will be generated).
+The Karmatek Website must be up and running (as the data is extracted from there) and should have entries (otherwise empty Excel sheet will be generated). To resend the confirmation email, in the Karmatek Website, the email id and password must be properly entered and less secure app access must be turned on from google settings. Admin details can be freely updated, but needs to confirm the previous credential before allowing the access to modify it.
